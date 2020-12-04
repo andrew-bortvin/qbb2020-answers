@@ -1,0 +1,9 @@
+## Bash scripts used
+
+hifive fends -L genome/mm9.len --binned 100000 test.HDF5
+hifive hic-data -X data/WT_100kb/raw_\*.mat test.HDF5 int_test
+hifive hic-project -f 25 -n 25 -j 100000 int_test porject
+hifive hic-normalize express -f 25 -w cis -o porject_norm porject
+
+
+bedtools intersect -a data/WT_fpkm.bed -b hic_comp.bed -f 0.50 -wb > intersects.bed
